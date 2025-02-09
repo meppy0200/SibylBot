@@ -50,10 +50,11 @@ npm install
    API_KEY=your_api_key_here
    ```
 
-4. Botu başlatın:
+4. Botu ve Dashboard'ı başlatın.:
 
    ```bash
    node server.js
+   python sibyl.py
    ```
 
 ## Kullanım
@@ -64,7 +65,7 @@ Botu çalıştırdıktan sonra, Discord sunucunuzda belirlenen komutları kullan
 
 Ayrıca web paneli üzerinden sunucu ayarlarını yönetebilirsiniz.
 
-## API Uç Noktaları
+## API
 
 - **Psycho-Pass Bilgisi Al**: `GET /api/psycho-pass?user_id=DISCORD_USER_ID`
 - **Psycho-Pass Güncelle**: `POST /api/update-psycho-pass`
