@@ -6,7 +6,6 @@ Bu projeyi tamamen öğrenme amaçlı, ChatGPT ile birlikte geliştirdim o yüzd
 
 - Türkcell'in açık kaynak yapay zekasını kullanarak kullanıcının mesajlarını tarar ve ofansif olup olmadığını belirler.
 - Belirlenene göre kullanıcının siciline puan ekler veya sicilinden puan eksiltir.
-- Kullanıcı komutları ve yönetici komutları
 - Otomatik moderasyon
 - API entegrasyonları
 - Sunucu yönetimi (kick, ban vb.)
