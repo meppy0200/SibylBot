@@ -1,0 +1,7 @@
+discord.py
+python-dotenv
+mysql-connector-python
+transformers
+torch
+numpy
+requests

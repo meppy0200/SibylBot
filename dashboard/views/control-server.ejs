@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= guildName %> - Sunucu Ayarları</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Inter', sans-serif;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #161b22;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        label {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 2px solid #30363d;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+        input[type="text"]:focus, input[type="number"]:focus, select:focus {
+            border-color: #1f6feb;
+        }
+        .btn-primary {
+            background-color: #1f6feb;
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, transform 0.2s;
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .btn-primary:hover {
+            background-color: #3b82f6;
+            transform: translateY(-3px);
+        }
+        .form-group-description {
+            font-size: 0.875rem;
+            color: #8b949e;
+            margin-top: 0.5rem;
+        }
+        .divider {
+            border-bottom: 2px solid #30363d;
+            margin: 2rem 0;
+        }
+        .back-link {
+            display: block;
+            margin-top: 2rem;
+            color: #c9d1d9;
+            text-align: center;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+        .back-link:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><%= guildName %> - Sunucu Ayarları</h1>
+
+        <form action="/control-server/<%= guildID %>" method="POST">
+            <!-- Bildirim Rol Seçimi -->
+            <div class="form-group">
+                <label for="notify_role_id">Bildirim Rolü Seç</label>
+                <select id="notify_role_id" name="notify_role_id" required>
+                    <% roles.forEach(role => { %>
+                        <option value="<%= role.id %>" <%= role.id === settings.notify_role_id ? 'selected' : '' %>><%= role.name %></option>
+                    <% }) %>
+                </select>
+                <div class="form-group-description">
+                    Bu rol, yüksek Psycho-Pass skoruna sahip kullanıcılar sunucuya katıldığında bildirim alacak.
+                </div>
+            </div>
+
+            <!-- Bildirim Kanalı Seçimi -->
+            <div class="form-group">
+                <label for="notify_channel_id">Bildirim Kanalı Seç</label>
+                <select id="notify_channel_id" name="notify_channel_id" required>
+                    <% channels.forEach(channel => { %>
+                        <option value="<%= channel.id %>" <%= channel.id === settings.notify_channel_id ? 'selected' : '' %>><%= channel.name %></option>
+                    <% }) %>
+                </select>
+                <div class="form-group-description">
+                    Bu kanal, yüksek Psycho-Pass skorlarına sahip kullanıcılar hakkında bildirimin yapılacağı kanal.
+                </div>
+            </div>
+
+            <!-- Kick Eşiği Seçimi -->
+            <div class="form-group">
+                <label for="kick_threshold">Kick Eşiği (Psycho-Pass Skoru)</label>
+                <input type="number" id="kick_threshold" name="kick_threshold" value="<%= settings.kick_threshold %>" required min="1" max="999999">
+                <div class="form-group-description">
+                    Psycho-Pass skoru bu seviyeyi geçtiğinde, kullanıcının sunucudan atılması sağlanır.
+                </div>
+            </div>
+
+            <!-- İşlem Türü (Kick, Ban, Uyarı) Seçimi -->
+            <div class="form-group">
+                <label for="action_type">İşlem Türü Seç</label>
+                <select id="action_type" name="action_type" required>
+                    <option value="kick" <%= settings.action_type === 'kick' ? 'selected' : '' %>>Kick</option>
+                </select>
+                <div class="form-group-description">
+                    Psycho-Pass skoru limiti aşıldığında uygulanacak işlem.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="ignored_channels">Geçersiz Kanallar</label>
+            
+                <!-- Kanal seçim kutusu -->
+                <div class="relative w-full">
+                    <select id="channel-select" class="w-full bg-gray-700 text-white px-4 py-2 rounded focus:outline-none">
+                        <option value="">Kanal Seç</option>
+                        <% channels.forEach(channel => { %>
+                            <option value="<%= channel.id %>"><%= channel.name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+            
+                <!-- Seçilen kanallar listesi -->
+                <div id="selected-channels" class="mt-2">
+                    <% if (settings.ignored_channels && settings.ignored_channels.length > 0) { %>
+                        <% settings.ignored_channels.forEach(channelID => { %>
+                            <div class="selected-channel bg-gray-800 text-white px-4 py-2 rounded mt-1 inline-block" data-id="<%= channelID %>">
+                                <%= channels.find(c => c.id === channelID).name %>
+                                <button type="button" class="ml-2 text-red-500 remove-channel" data-id="<%= channelID %>">✖</button>
+                            </div>
+                        <% }) %>
+                    <% } %>
+                </div>
+            
+                <!-- Gizli input: Seçilen kanalların değerlerini burada tutuyoruz -->
+                <input type="hidden" name="ignored_channels" id="ignored_channels" value="<%= settings.ignored_channels ? settings.ignored_channels.join(',') : '' %>">
+            
+                <div class="form-group-description">
+                    Bu kanallarda atılan mesajlar Psycho-Pass sistemi tarafından yok sayılacaktır.
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary">Ayarları Kaydet</button>
+        </form>
+
+        <div class="divider"></div>
+        <a href="/control-panel" class="back-link">Kontrol Paneline Geri Dön</a>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.9.1/dist/cdn.min.js" defer></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const channelSelect = document.getElementById('channel-select');
+        const selectedChannelsDiv = document.getElementById('selected-channels');
+        const hiddenInput = document.getElementById('ignored_channels');
+
+        // Kanal seçildiğinde
+        channelSelect.addEventListener('change', () => {
+            const selectedChannelID = channelSelect.value;
+            const selectedChannelName = channelSelect.options[channelSelect.selectedIndex].text;
+
+            if (selectedChannelID && !document.querySelector(`[data-id="${selectedChannelID}"]`)) {
+                // Yeni bir div ekle (seçilen kanal)
+                const newChannelDiv = document.createElement('div');
+                newChannelDiv.classList.add('selected-channel', 'bg-gray-800', 'text-white', 'px-4', 'py-2', 'rounded', 'mt-1', 'inline-block');
+                newChannelDiv.setAttribute('data-id', selectedChannelID);
+                newChannelDiv.innerHTML = `
+                    ${selectedChannelName}
+                    <button type="button" class="ml-2 text-red-500 remove-channel" data-id="${selectedChannelID}">✖</button>
+                `;
+
+                selectedChannelsDiv.appendChild(newChannelDiv);
+                updateHiddenInput();
+            }
+        });
+
+        // Seçilen kanalı listeden çıkartma
+        selectedChannelsDiv.addEventListener('click', (event) => {
+            if (event.target.classList.contains('remove-channel')) {
+                const channelID = event.target.getAttribute('data-id');
+                document.querySelector(`[data-id="${channelID}"]`).remove();
+                updateHiddenInput();
+            }
+        });
+
+        // Gizli input'u güncelleme
+        function updateHiddenInput() {
+            const selectedChannelIDs = Array.from(document.querySelectorAll('.selected-channel')).map(channelDiv => channelDiv.getAttribute('data-id'));
+            hiddenInput.value = selectedChannelIDs.join(',');
+        }
+    });
+</script>
+</html>

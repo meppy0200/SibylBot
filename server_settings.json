@@ -1,0 +1,37 @@
+{
+    "456627490572599308": {
+        "notify_role_id": "510751121762156564",
+        "notify_channel_id": "730458276214603846",
+        "kick_threshold": 250
+    },
+    "935834149653200936": {
+        "notify_role_id": "935834470450348032",
+        "notify_channel_id": "1079121834299105331",
+        "kick_threshold": 250
+    },
+    "1228104857102057472": {
+        "notify_role_id": "1229132663009575062",
+        "notify_channel_id": "1228104857655836808",
+        "kick_threshold": 250
+    },
+    "532855574350790657": {
+        "notify_role_id": "1128350658597240842",
+        "notify_channel_id": "1248228535164735518",
+        "kick_threshold": 250
+    },
+    "748266464435372032": {
+        "notify_role_id": "",
+        "notify_channel_id": "",
+        "kick_threshold": 250
+    },
+    "695326501897371729": {
+        "notify_role_id": "",
+        "notify_channel_id": "",
+        "kick_threshold": 250
+    },
+    "1084004525037338624": {
+        "notify_role_id": "",
+        "notify_channel_id": "",
+        "kick_threshold": 250
+    }
+}

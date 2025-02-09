@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sibyl Control Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+
+        .sidebar {
+            background-color: #161b22;
+            height: 100vh;
+            padding: 2rem;
+            color: #c9d1d9;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem;
+            background-color: #161b22;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-image: url('<%= user.avatarURL %>');
+            background-size: cover;
+        }
+
+        .welcome-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .info {
+            font-size: 1rem;
+            line-height: 1.8rem;
+            color: #c9d1d9;
+            text-align: center;
+        }
+
+        .info div {
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #1f6feb;
+            color: white;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            margin-top: 1rem;
+        }
+
+        .main-content {
+            padding: 2rem;
+            background-color: #0d1117;
+            flex: 1;
+        }
+
+        .main-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stats-card {
+            background-color: #161b22;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: box-shadow 0.3s ease;
+            margin-bottom: 2rem;
+            flex: 1;
+            margin-right: 1rem;
+        }
+
+        .stats-card:last-child {
+            margin-right: 0;
+        }
+
+        .stats-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+        }
+
+        .stats-card h3 {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .stats-card p {
+            font-size: 1.25rem;
+            color: #c9d1d9;
+        }
+
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .grid-cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .btn-custom, .btn-primary {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: background-color 0.2s ease-in-out, transform 0.2s;
+        }
+
+        .btn-custom:hover, .btn-primary:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-custom {
+            background-color: #238636;
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: #1f6feb;
+            color: white;
+        }
+
+        .card {
+            background-color: #161b22;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .card-content {
+            flex: 1;
+            margin-left: 1rem;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flex">
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-image"></div>
+                <div class="welcome-text">Hoş geldin dedektif</div>
+                <div class="info">
+                    <div><strong>Adı:</strong> <%= user.username %></div>
+                    <div><strong>ID:</strong> <%= user.id %></div>
+                    <div><strong>Psycho-Pass Skoru:</strong> <%= psychoPassData.score %></div>
+                    <div><strong>Tehlike Seviyesi:</strong> 
+                        <% if (psychoPassData.score >= 300) { %>
+                            <span class="badge" style="background-color: #d73a49;">En Yüksek</span>
+                        <% } else if (psychoPassData.score >= 100) { %>
+                            <span class="badge" style="background-color: #e36209;">Dikkat</span>
+                        <% } else { %>
+                            <span class="badge" style="background-color: #238636;">Normal</span>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-content flex-1">
+            <div class="dashboard-header">
+                <h1>Kontrol Paneli</h1>
+                <button class="btn-primary">Raporlar</button>
+            </div>
+            <div class="grid grid-cols-3 mb-10">
+                <div class="stats-card">
+                    <h3>Sunucular</h3>
+                    <p><%= adminGuilds.length %> Sunucu</p>
+                </div>
+                <div class="stats-card">
+                    <h3>Rütbeniz:</h3>
+                    <p>Dedektif</p>
+                </div>
+                <div class="stats-card">
+                    <h3>Psycho-Pass Svy.</h3>
+                    <p><%= (psychoPassData.score).toFixed(1) %></p>
+                </div>
+            </div>
+            <h2 class="text-xl font-semibold mb-4">Yönetici Yetkinizin Olduğu Sunucular</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <% adminGuilds
+                    .sort((a, b) => b.hasBot - a.hasBot) 
+                    .forEach(guild => { %>
+                    <div class="card">
+                        <img src="<%= guild.iconURL %>" alt="Sunucu Resmi">
+                        <div class="card-content">
+                            <h3><%= guild.name %></h3>
+                        </div>
+                        <% if (!guild.hasBot) { %>
+                            <a href="/add-bot/<%= guild.id %>" class="btn-custom">Botu Ekle</a>
+                        <% } else { %>
+                            <a href="/control-server/<%= guild.id %>" class="btn-primary">Giriş Yap</a>
+                        <% } %>
+                    </div>
+                <% }) %>
+            </div>
+</body>
+</html>

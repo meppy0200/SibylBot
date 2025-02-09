@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sibyl Bot - Bağış</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Roboto', sans-serif;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+        .donate-card {
+            background-color: #161b22;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .donate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .cta-section {
+            background-color: #161b22;
+            padding: 3rem;
+            text-align: center;
+            border-radius: 12px;
+        }
+        .cta-button {
+            background-color: #00d4ff;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, background-color 0.2s;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            background-color: #007bff;
+        }
+        .stats h3 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .stats p {
+            font-size: 1.2rem;
+            color: #c9d1d9;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-gray-800 py-4 shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto flex justify-between items-center px-4">
+            <div>
+                <a href="/" class="text-white text-3xl font-bold">SibylBot</a>
+            </div>
+            <ul class="flex space-x-6">
+                <li><a href="/" class="text-gray-300 hover:text-white transition">Ana Sayfa</a></li>
+                <li><a href="/features" class="text-gray-300 hover:text-white transition">Özellikler</a></li>
+                <li><a href="/donate" class="text-gray-300 hover:text-white transition">Bağış</a></li>
+                <li><a href="/control-panel" class="text-gray-300 hover:text-white transition">Kontrol Paneli</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero-bg">
+        <div class="container">
+            <h1 class="text-5xl font-bold">Sibyl Bot - Bağış Yapın</h1>
+            <p class="mt-4 text-lg">Sibyl Bot'un gelişimine katkıda bulunun ve sunucunuzda daha fazla özellik kullanmanın tadını çıkarın.</p>
+        </div>
+    </section>
+    <section class="py-16 bg-gray-900">
+        <div class="container mx-auto text-center">
+            <h2 class="section-title">Bağış Seçenekleri</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="donate-card">
+                    <h3 class="text-2xl font-semibold mb-4">Destekçi</h3>
+                    <p class="text-lg text-gray-400 mb-6">Aylık $5 bağış ile Sibyl Bot'u destekleyin ve sunucunuzda daha fazla özellik kullanmanın keyfini çıkarın.</p>
+                    <a href="https://www.patreon.com/sibylbot" class="cta-button">Bağış Yap</a>
+                </div>
+                <div class="donate-card">
+                    <h3 class="text-2xl font-semibold mb-4">Geliştirici Destekçisi</h3>
+                    <p class="text-lg text-gray-400 mb-6">Aylık $10 bağış ile Sibyl Bot'un geliştirilmesine katkıda bulunun ve özel güncellemelerden ilk siz haberdar olun.</p>
+                    <a href="https://www.patreon.com/sibylbot" class="cta-button">Bağış Yap</a>
+                </div>
+                <div class="donate-card">
+                    <h3 class="text-2xl font-semibold mb-4">VIP Destekçi</h3>
+                    <p class="text-lg text-gray-400 mb-6">Aylık $25 bağış ile Sibyl Bot ekibine doğrudan destek verin, premium özelliklere erişin ve özel Discord rolünüzü alın.</p>
+                    <a href="https://www.patreon.com/sibylbot" class="cta-button">Bağış Yap</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="cta-section my-16 mx-auto max-w-4xl">
+        <h2 class="text-3xl font-bold mb-6">Bağış Yaparak Destek Olun</h2>
+        <p class="text-lg text-gray-400 mb-6">Bağışlarınız, Sibyl Bot'un gelişimini ve yeni özelliklerin eklenmesini sağlar. Sadece sunucunuzun güvenliğini sağlamakla kalmaz, aynı zamanda daha iyi bir deneyim için katkıda bulunursunuz.</p>
+        <a href="https://www.patreon.com/sibylbot" class="cta-button">Bağış Yap</a>
+    </section>
+    <footer class="bg-gray-800 py-8">
+        <div class="container mx-auto text-center text-gray-400">
+            <p>&copy; 2024 SibylBot. Tüm hakları saklıdır.</p>
+            <div class="mt-4">
+                <a href="https://github.com" class="text-gray-400 hover:text-white mx-2">GitHub</a>
+                <a href="https://twitter.com" class="text-gray-400 hover:text-white mx-2">Twitter</a>
+                <a href="https://discord.com" class="text-gray-400 hover:text-white mx-2">Discord</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

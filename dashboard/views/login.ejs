@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sibyl Sistemine Giriş</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .login-box {
+            background-color: #161b22;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .login-box h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+        .btn-discord {
+            background-color: #5865F2;
+            padding: 0.75rem 1.5rem;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            color: white;
+            transition: transform 0.3s ease-in-out;
+            display: inline-block;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+        }
+        .btn-discord:hover {
+            transform: translateY(-3px);
+            background-color: #4752c4;
+        }
+        .sibyl-logo {
+            width: 150px;
+            margin: 0 auto 2rem auto;
+            animation: pulse 2s infinite ease-in-out;
+        }
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.9) 80%);
+            z-index: 1;
+            opacity: 0.7;
+            pointer-events: none;
+            animation: moveBackground 10s infinite alternate;
+        }
+        @keyframes moveBackground {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.05);
+            }
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div> 
+    <div class="login-box">
+        <img src="https://i.ibb.co/9WBs869/Bureau-logo.png" 
+             alt="Sibyl Icon" class="sibyl-logo">
+        <h1>Sibyl Sistemine Giriş</h1>
+        <a href="/auth/discord" class="btn-discord">Discord ile Giriş Yap</a>
+    </div>
+</body>
+</html>

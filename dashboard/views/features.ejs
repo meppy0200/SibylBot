@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sibyl Bot - Özellikler</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Roboto', sans-serif;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+        .features-card {
+            background-color: #161b22;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .features-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+        .cta-section {
+            background-color: #161b22;
+            padding: 3rem;
+            text-align: center;
+            border-radius: 12px;
+        }
+        .cta-button {
+            background-color: #00d4ff;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, background-color 0.2s;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            background-color: #007bff;
+        }
+        .stats {
+            background-color: #0d1117;
+            padding: 2rem;
+            text-align: center;
+        }
+        .stats h3 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .stats p {
+            font-size: 1.2rem;
+            color: #c9d1d9;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="bg-gray-800 py-4 shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto flex justify-between items-center px-4">
+            <div>
+                <a href="/" class="text-white text-3xl font-bold">SibylBot</a>
+            </div>
+            <ul class="flex space-x-6">
+                <li><a href="/" class="text-gray-300 hover:text-white transition">Ana Sayfa</a></li>
+                <li><a href="/features" class="text-gray-300 hover:text-white transition">Özellikler</a></li>
+                <li><a href="/donate" class="text-gray-300 hover:text-white transition">Bağış</a></li>
+                <li><a href="/control-panel" class="text-gray-300 hover:text-white transition">Kontrol Paneli</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg">
+        <div class="container">
+            <h1 class="text-5xl font-bold">Sibyl Bot - Özellikler</h1>
+            <p class="mt-4 text-lg">Sunucunuzu güvence altına alın ve suç eğilimlerini takip edin</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-900">
+        <div class="container mx-auto text-center">
+            <h2 class="section-title">Öne Çıkan Özellikler</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Feature 1 -->
+                <div class="features-card">
+                    <i class="fas fa-brain feature-icon"></i>
+                    <h3 class="text-2xl font-semibold">Psycho-Pass Skor Takibi</h3>
+                    <p>Kullanıcıların suç eğilimlerini takip edin, Psycho-Pass skorlarını izleyin ve değerlere göre uyarılar gönderin. Sunucunuzun güvenliği artık Sibyl ile kontrol altında.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="features-card">
+                    <i class="fas fa-user-shield feature-icon"></i>
+                    <h3 class="text-2xl font-semibold">Kullanıcı Moderasyonu</h3>
+                    <p>Kullanıcıların sunucudaki hareketlerine göre anlık müdahale yapın. Yüksek Psycho-Pass skorlarına sahip kullanıcılar için uyarılar gönderin veya otomatik cezalar uygulayın.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="features-card">
+                    <i class="fas fa-eye feature-icon"></i>
+                    <h3 class="text-2xl font-semibold">Gerçek Zamanlı İzleme</h3>
+                    <p>Sunucunuzdaki mesajları anında takip edin ve anlık Psycho-Pass değişimlerine göre botun otomatik müdahale etmesini sağlayın.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="features-card">
+                    <i class="fas fa-chart-line feature-icon"></i>
+                    <h3 class="text-2xl font-semibold">Detaylı Analizler</h3>
+                    <p>Kullanıcıların zaman içindeki suç eğilimlerini izleyin. Sunucunuzda hangi kullanıcıların daha tehlikeli olduğunu, hangi üyelerin güvenilir olduğunu analiz edin.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="features-card">
+                    <i class="fas fa-robot feature-icon"></i>
+                    <h3 class="text-2xl font-semibold">Otomatik Uyarılar</h3>
+                    <p>Sibyl Bot, belirli eşiklerin aşılması durumunda otomatik uyarılar gönderir. Yüksek riskli kullanıcılara karşı önceden uyarı alarak sunucunuzu daha güvenli hale getirin.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="features-card">
+                    <i class="fas fa-tools feature-icon"></i>
+                    <h3 class="text-2xl font-semibold">Özelleştirilebilir Ayarlar</h3>
+                    <p>Sunucunuzun ihtiyaçlarına göre botu özelleştirin. Psycho-Pass eşik değerlerini belirleyin, uyarı ve ceza sistemlerini kendi kurallarınıza göre ayarlayın.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <h3><%= userCount %></h3>
+        <p>Aktif Kullanıcı</p>
+        <h3><%= serverCount %></h3>
+        <p>Sunucu</p>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section my-16 mx-auto max-w-4xl">
+        <h2 class="text-3xl font-bold mb-6">Sibyl Bot'u Hemen Deneyin</h2>
+        <p class="text-lg text-gray-400 mb-6">Sunucunuzun güvenliğini sağlamak için Sibyl Bot'un tüm özelliklerinden yararlanın. Gerçek zamanlı analizler, kullanıcı moderasyonu ve otomatik uyarı sistemleri ile sunucunuzu koruma altına alın.</p>
+        <a href="/control-panel" class="cta-button">Kontrol Paneline Giriş Yapın</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8">
+        <div class="container mx-auto text-center text-gray-400">
+            <p>&copy; 2024 SibylBot. Tüm hakları saklıdır.</p>
+            <div class="mt-4">
+                <a href="https://github.com" class="text-gray-400 hover:text-white mx-2">GitHub</a>
+                <a href="https://twitter.com" class="text-gray-400 hover:text-white mx-2">Twitter</a>
+                <a href="https://discord.com" class="text-gray-400 hover:text-white mx-2">Discord</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
